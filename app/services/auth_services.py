@@ -6,7 +6,7 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-
+REALM_NAME = os.getenv("KEYCLOAK_REALM_NAME")
 KEYCLOAK_URL = os.getenv("KEYCLOAK_URL")
 CLIENT_ID = os.getenv("KEYCLOAK_CLIENT_ID")
 CLIENT_SECRET = os.getenv("KEYCLOAK_CLIENT_SECRET")
@@ -14,22 +14,27 @@ KEYCLOAK_ADMIN_URL = os.getenv("KEYCLOAK_ADMIN_URL")
 ADMIN_USERNAME = os.getenv("KEYCLOAK_ADMIN_USERNAME")
 ADMIN_PASSWORD = os.getenv("KEYCLOAK_ADMIN_PASSWORD")
 
+#fix getadmin
 async def get_admin_token() -> str:
     async with httpx.AsyncClient() as client:
         response = await client.post(
-            f"{KEYCLOAK_ADMIN_URL}/realms/master/protocol/openid-connect/token",
+            f"{KEYCLOAK_URL}/protocol/openid-connect/token",  # Use KEYCLOAK_URL, which points to fastapi-realm
             data={
                 "grant_type": "password",
-                "client_id": "admin-cli",
-                "username": ADMIN_USERNAME,
-                "password": ADMIN_PASSWORD,
+                "client_secret": CLIENT_SECRET,  # Add this
+                "client_id": CLIENT_ID,  # New admin client
+                "username": ADMIN_USERNAME,  # fastapi-admin
+                "password": ADMIN_PASSWORD,  # fastapi-admin-password
             },
             headers={"Content-Type": "application/x-www-form-urlencoded"},
         )
+        print("Admin token request URL:", f"{KEYCLOAK_URL}/protocol/openid-connect/token")
+        print("Admin token response:", response.status_code, response.text)
         if response.status_code != 200:
-            raise HTTPException(status_code=401, detail="Admin authentication failed")
+            raise HTTPException(status_code=401, detail=f"Admin authentication failed: {response.text}")
         return response.json()["access_token"]
-
+    
+ #login   
 async def login(login_request: LoginRequest) -> dict:
     try:
         async with httpx.AsyncClient() as client:
@@ -53,29 +58,31 @@ async def login(login_request: LoginRequest) -> dict:
             return response.json()  # Returns access_token, refresh_token, etc.
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Login error: {str(e)}")
-
+    
+#fix register    
 async def register(user_data: RegisterRequest) -> dict:
     try:
-        # Get admin token
         admin_token = await get_admin_token()
+        print("Admin token obtained:", admin_token[:10] + "...")
 
-        # Create user
         async with httpx.AsyncClient() as client:
             response = await client.post(
-                f"{KEYCLOAK_ADMIN_URL}/realms/fastapi-realm/users",
+                f"{KEYCLOAK_ADMIN_URL}/realms/{REALM_NAME}/users",
                 json={
                     "username": user_data.username,
                     "email": user_data.email,
                     "firstName": user_data.first_name,
                     "lastName": user_data.last_name,
                     "enabled": True,
-                    "emailVerified": True,  # Set to False for email verification
+                    "emailVerified": True,
                 },
                 headers={
                     "Authorization": f"Bearer {admin_token}",
                     "Content-Type": "application/json",
                 },
             )
+            print("User creation URL:", f"{KEYCLOAK_ADMIN_URL}/realms/{REALM_NAME}/users")
+            print("User creation response:", response.status_code, response.text)
             if response.status_code not in [201, 409]:
                 raise HTTPException(
                     status_code=response.status_code,
@@ -84,28 +91,30 @@ async def register(user_data: RegisterRequest) -> dict:
             if response.status_code == 409:
                 raise HTTPException(status_code=400, detail="User already exists")
 
-            # Get user ID
             users_response = await client.get(
-                f"{KEYCLOAK_ADMIN_URL}/realms/fastapi-realm/users?username={user_data.username}",
+                f"{KEYCLOAK_ADMIN_URL}/realms/{REALM_NAME}/users?username={user_data.username}",
                 headers={"Authorization": f"Bearer {admin_token}"},
             )
+            print("User retrieval URL:", f"{KEYCLOAK_ADMIN_URL}/realms/{REALM_NAME}/users?username={user_data.username}")
+            print("User retrieval response:", users_response.status_code, users_response.json())
             if users_response.status_code != 200 or not users_response.json():
                 raise HTTPException(status_code=500, detail="Failed to retrieve created user")
             user_id = users_response.json()[0]["id"]
 
-            # Set password
             password_response = await client.put(
-                f"{KEYCLOAK_ADMIN_URL}/realms/fastapi-realm/users/{user_id}/reset-password",
+                f"{KEYCLOAK_ADMIN_URL}/realms/{REALM_NAME}/users/{user_id}/reset-password",
                 json={
                     "type": "password",
                     "value": user_data.password,
-                    "temporary": False,  # Set to True for password reset on first login
+                    "temporary": False,
                 },
                 headers={
                     "Authorization": f"Bearer {admin_token}",
                     "Content-Type": "application/json",
                 },
             )
+            print("Password set URL:", f"{KEYCLOAK_ADMIN_URL}/realms/{REALM_NAME}/users/{user_id}/reset-password")
+            print("Password set response:", password_response.status_code, password_response.text)
             if password_response.status_code != 204:
                 raise HTTPException(status_code=500, detail="Failed to set password")
 
