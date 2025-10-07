@@ -1,7 +1,8 @@
 # /services/auth_service.py
 import httpx
-from fastapi import HTTPException
+from fastapi import HTTPException, Depends
 from app.schemas.auth import LoginRequest, RegisterRequest
+from app.auth.keycloak_verify import verify_token
 import os
 from dotenv import load_dotenv
 
@@ -13,6 +14,7 @@ CLIENT_SECRET = os.getenv("KEYCLOAK_CLIENT_SECRET")
 KEYCLOAK_ADMIN_URL = os.getenv("KEYCLOAK_ADMIN_URL")
 ADMIN_USERNAME = os.getenv("KEYCLOAK_ADMIN_USERNAME")
 ADMIN_PASSWORD = os.getenv("KEYCLOAK_ADMIN_PASSWORD")
+REDIRECT_URI = os.getenv("REDIRECT_URI")
 
 #fix getadmin
 async def get_admin_token() -> str:
@@ -35,6 +37,8 @@ async def get_admin_token() -> str:
         return response.json()["access_token"]
     
  #login   
+
+#login
 async def login(login_request: LoginRequest) -> dict:
     try:
         async with httpx.AsyncClient() as client:
@@ -124,3 +128,35 @@ async def register(user_data: RegisterRequest) -> dict:
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Registration error: {str(e)}")
+async def get_social_login_url() -> dict:
+    auth_url = (
+        f"{KEYCLOAK_URL}/realms/{REALM_NAME}/protocol/openid-connect/auth?"
+        f"client_id={CLIENT_ID}&"
+        f"redirect_uri={REDIRECT_URI}&"
+        f"response_type=code&"
+        f"scope=openid%20email%20profile"
+    )
+    return {"auth_url": auth_url}
+
+async def social_login_callback(code: str) -> dict:
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.post(
+                f"{KEYCLOAK_URL}/realms/{REALM_NAME}/protocol/openid-connect/token",
+                data={
+                    "grant_type": "authorization_code",
+                    "client_id": CLIENT_ID,
+                    "client_secret": CLIENT_SECRET,
+                    "code": code,
+                    "redirect_uri": REDIRECT_URI,
+                },
+                headers={"Content-Type": "application/x-www-form-urlencoded"},
+            )
+            if response.status_code != 200:
+                raise HTTPException(
+                    status_code=401,
+                    detail=f"Failed to exchange code for token: {response.text}"
+                )
+            return response.json()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Social login error: {str(e)}")
