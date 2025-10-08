@@ -35,8 +35,7 @@ async def get_admin_token() -> str:
         if response.status_code != 200:
             raise HTTPException(status_code=401, detail=f"Admin authentication failed: {response.text}")
         return response.json()["access_token"]
-    
- #login   
+
 
 #login
 async def login(login_request: LoginRequest) -> dict:
