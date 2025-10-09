@@ -4,69 +4,60 @@ import subprocess
 import tempfile
 import zipfile
 import requests
+import logging
 from fastapi import HTTPException
 from app.schemas.scan_schema import ScanResult
 from dotenv import load_dotenv
 import time
 import uuid
 
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 class SonarQubeService:
     def __init__(self):
         load_dotenv()
-        self.sonar_host_scanner = "http://sonarqube-doc:9000"  # For SonarScanner in Docker network
-        self.sonar_host_api = "http://localhost:9003"  # For FastAPI on host
+        self.sonar_host_scanner = "http://sonarqube-doc:9000"
+        self.sonar_host_api = "http://localhost:9003"
         self.sonar_token = os.getenv("SONAR_TOKEN")
         if not self.sonar_token:
             raise ValueError("SONAR_TOKEN not set in .env")
 
-        # Verify Docker is available
+        # Verify Docker
         try:
             subprocess.run(["docker", "--version"], capture_output=True, check=True)
         except subprocess.CalledProcessError:
             raise ValueError("Docker is not installed or not running")
 
+        # Verify SonarQube
+        try:
+            status_resp = requests.get(f"{self.sonar_host_api}/api/system/status", timeout=5)
+            if status_resp.status_code != 200 or status_resp.json().get("status") != "UP":
+                raise HTTPException(status_code=503, detail="SonarQube server is not available")
+        except requests.RequestException as e:
+            raise HTTPException(status_code=503, detail=f"Failed to connect to SonarQube: {str(e)}")
+
     async def scan_zip(self, file: bytes, filename: str) -> ScanResult:
         if not filename.endswith(".zip"):
             raise HTTPException(status_code=400, detail="Only .zip files allowed")
 
-        # Comprehensive mapping of SonarQube supported languages to file extensions
+        # Supported extensions
         supported_extensions = {
-            'abap': ['.abap'],
-            'ansible': ['.yml', '.yaml'],
-            'apex': ['.cls', '.apex'],
-            'arm': ['.json', '.bicep'],
-            'cpp': ['.c', '.cpp', '.h', '.hpp', '.m', '.mm'],
-            'cloudformation': ['.json', '.yml', '.yaml'],
-            'cs': ['.cs'],
-            'cobol': ['.cbl', '.cob', '.cpy'],
-            'docker': ['.dockerfile', 'dockerfile', 'dockerfile.'],
-            'dart': ['.dart'],
-            'flex': ['.mxml', '.as'],
-            'githubactions': ['.yml', '.yaml'],
-            'go': ['.go'],
-            'html': ['.html', '.htm', '.xhtml'],
-            'java': ['.java'],
-            'js': ['.js', '.jsx', '.ts', '.tsx', '.css', '.scss', '.less'],
-            'jcl': ['.jcl'],
-            'json': ['.json'],
-            'kotlin': ['.kt', '.kts'],
-            'k8s': ['.yml', '.yaml'],
-            'php': ['.php', '.php3', '.php4', '.php5', '.phtml'],
-            'pli': ['.pli', '.pl1'],
-            'plsql': ['.sql'],
-            'py': ['.py'],
-            'rpg': ['.rpgle', '.sqlrpgle'],
-            'ruby': ['.rb', '.erb', '.rjs', '.rhtml', '.haml', '.slim'],
-            'rust': ['.rs'],
-            'scala': ['.scala', '.sc'],
-            'secrets': [],
-            'swift': ['.swift'],
-            'terraform': ['.tf', '.tfvars'],
-            'tsql': ['.sql'],
-            'vbnet': ['.vb'],
-            'vb6': ['.bas', '.frm', '.cls'],
-            'xml': ['.xml'],
-            'yaml': ['.yml', '.yaml']
+            'abap': ['.abap'], 'ansible': ['.yml', '.yaml'], 'apex': ['.cls', '.apex'],
+            'arm': ['.json', '.bicep'], 'cpp': ['.c', '.cpp', '.h', '.hpp', '.m', '.mm'],
+            'cloudformation': ['.json', '.yml', '.yaml'], 'cs': ['.cs'],
+            'cobol': ['.cbl', '.cob', '.cpy'], 'docker': ['.dockerfile', 'dockerfile', 'dockerfile.'],
+            'dart': ['.dart'], 'flex': ['.mxml', '.as'], 'githubactions': ['.yml', '.yaml'],
+            'go': ['.go'], 'html': ['.html', '.htm', '.xhtml'], 'java': ['.java'],
+            'js': ['.js', '.jsx', '.ts', '.tsx', '.css', '.scss', '.less'], 'jcl': ['.jcl'],
+            'json': ['.json'], 'kotlin': ['.kt', '.kts'], 'k8s': ['.yml', '.yaml'],
+            'php': ['.php', '.php3', '.php4', '.php5', '.phtml'], 'pli': ['.pli', '.pl1'],
+            'plsql': ['.sql'], 'py': ['.py'], 'rpg': ['.rpgle', '.sqlrpgle'],
+            'ruby': ['.rb', '.erb', '.rjs', '.rhtml', '.haml', '.slim'], 'rust': ['.rs'],
+            'scala': ['.scala', '.sc'], 'secrets': [], 'swift': ['.swift'],
+            'terraform': ['.tf', '.tfvars'], 'tsql': ['.sql'], 'vbnet': ['.vb'],
+            'vb6': ['.bas', '.frm', '.cls'], 'xml': ['.xml'], 'yaml': ['.yml', '.yaml']
         }
         all_supported_exts = set()
         for exts in supported_extensions.values():
@@ -81,12 +72,16 @@ class SonarQubeService:
             with zipfile.ZipFile(zip_path, 'r') as zip_ref:
                 if not zip_ref.namelist():
                     raise HTTPException(status_code=400, detail="Zip file is empty")
-                if not any(f.endswith(tuple(all_supported_exts)) for f in zip_ref.namelist()):
+                has_supported_files = False
+                for f in zip_ref.namelist():
+                    if f.endswith(tuple(all_supported_exts)):
+                        has_supported_files = True
+                        break
+                if not has_supported_files:
                     raise HTTPException(status_code=400, detail="No supported source files in zip")
                 zip_ref.extractall(temp_dir)
 
             project_dir = temp_dir
-            # Generate unique project key
             project_key = f"scan_{int(time.time())}_{uuid.uuid4().hex[:8]}"
             project_name = f"Scan_{filename}_{int(time.time())}"
 
@@ -94,13 +89,13 @@ class SonarQubeService:
             api_base = f"{self.sonar_host_api}/api"
             auth_headers = {"Authorization": f"Bearer {self.sonar_token}"}
             create_project_url = f"{api_base}/projects/create"
-            create_project_params = {
-                "project": project_key,
-                "name": project_name
-            }
-            create_resp = requests.post(create_project_url, headers=auth_headers, params=create_project_params)
-            if create_resp.status_code != 200:
-                raise HTTPException(status_code=500, detail=f"Failed to create project: {create_resp.text}")
+            create_project_params = {"project": project_key, "name": project_name}
+            try:
+                create_resp = requests.post(create_project_url, headers=auth_headers, params=create_project_params, timeout=10)
+                if create_resp.status_code != 200:
+                    raise HTTPException(status_code=500, detail=f"Failed to create project: {create_resp.text}")
+            except requests.RequestException as e:
+                raise HTTPException(status_code=500, detail=f"Project creation failed: {str(e)}")
 
             # Create sonar-project.properties
             props_path = os.path.join(project_dir, "sonar-project.properties")
@@ -112,17 +107,18 @@ sonar.sourceEncoding=UTF-8
 sonar.host.url={self.sonar_host_scanner}
 sonar.token={self.sonar_token}
 """
-            if any(f.endswith('.rb') for f in os.listdir(project_dir)):
-                props_content += "sonar.ruby.file.suffixes=.rb\n"
+            if any(os.path.splitext(f)[1] in {'.rb', '.erb', '.rjs', '.rhtml', '.haml', '.slim'} for f in os.listdir(project_dir)):
+                props_content += "sonar.ruby.file.suffixes=.rb,.erb,.rjs,.rhtml,.haml,.slim\n"
+            if any(os.path.splitext(f)[1] in {'.java'} for f in os.listdir(project_dir)):
+                props_content += "sonar.java.file.suffixes=.java\n"
             with open(props_path, "w") as props_file:
                 props_file.write(props_content)
 
-            # Run SonarScanner via Docker
+            # Run SonarScanner
             volume_mount = f"{os.path.abspath(project_dir)}:/usr/src"
             docker_cmd = [
                 "docker", "run", "--rm", "--network=sonarqube-net",
-                "-v", volume_mount,
-                "-w", "/usr/src",
+                "-v", volume_mount, "-w", "/usr/src",
                 "-e", f"SONAR_HOST_URL={self.sonar_host_scanner}",
                 "-e", f"SONAR_TOKEN={self.sonar_token}",
                 "sonarsource/sonar-scanner-cli:latest"
@@ -133,18 +129,15 @@ sonar.token={self.sonar_token}
 
             # Wait for scan results
             for _ in range(10):
-                issues_resp = requests.get(f"{api_base}/issues/search", headers=auth_headers, params={"componentKeys": project_key, "per_page": 10})
+                issues_resp = requests.get(f"{api_base}/issues/search", headers=auth_headers, params={"componentKeys": project_key, "per_page": 100}, timeout=10)
                 if issues_resp.status_code == 200 and issues_resp.json().get("issues"):
                     break
                 time.sleep(2)
 
             # Fetch measures
             measures_url = f"{api_base}/measures/component"
-            measures_params = {
-                "component": project_key,
-                "metricKeys": "bugs,vulnerabilities,code_smells,coverage"
-            }
-            measures_resp = requests.get(measures_url, headers=auth_headers, params=measures_params)
+            measures_params = {"component": project_key, "metricKeys": "bugs,vulnerabilities,code_smells,coverage"}
+            measures_resp = requests.get(measures_url, headers=auth_headers, params=measures_params, timeout=10)
             if measures_resp.status_code != 200:
                 raise HTTPException(status_code=500, detail=f"Failed to fetch measures: {measures_resp.text}")
 
@@ -155,25 +148,53 @@ sonar.token={self.sonar_token}
                 value = measure.get("value")
                 measures[key] = float(value) if value else None
 
-            # Fetch issues
+            # Fetch issues with detailed information
             issues_url = f"{api_base}/issues/search"
-            issues_params = {"componentKeys": project_key, "per_page": 10}
-            issues_resp = requests.get(issues_url, headers=auth_headers, params=issues_params)
+            issues_params = {"componentKeys": project_key, "per_page": 100}
+            issues_resp = requests.get(issues_url, headers=auth_headers, params=issues_params, timeout=10)
             if issues_resp.status_code != 200:
                 raise HTTPException(status_code=500, detail=f"Failed to fetch issues: {issues_resp.text}")
 
             issues_data = issues_resp.json().get("issues", [])
-            issues = [
-                {"key": i["key"], "message": i["message"], "severity": i["severity"]}
-                for i in issues_data
-            ]
+            issues = []
+            for i in issues_data:
+                # Optional: Filter for .java files
+                # if not i.get("component", "").endswith(".java"):
+                #     continue
+                issue = {
+                    "key": i["key"],
+                    "message": i["message"],
+                    "severity": i["severity"],
+                    "file": i.get("component", "").split(":")[-1],
+                    "line": i.get("line"),
+                    "start_line": i.get("textRange", {}).get("startLine"),
+                    "end_line": i.get("textRange", {}).get("endLine"),
+                    "code_snippet": None
+                }
+                if issue["line"]:
+                    try:
+                        source_url = f"{api_base}/sources/lines"
+                        source_params = {
+                            "key": i["component"],
+                            "from": max(1, issue["line"] - 2),
+                            "to": issue["line"] + 2
+                        }
+                        source_resp = requests.get(source_url, headers=auth_headers, params=source_params, timeout=10)
+                        if source_resp.status_code == 200:
+                            lines = source_resp.json().get("sources", [])
+                            issue["code_snippet"] = "\n".join([line["code"] for line in lines if "code" in line])
+                        else:
+                            logger.warning(f"Failed to fetch code snippet for issue {i['key']}: {source_resp.status_code} {source_resp.text}")
+                    except requests.RequestException as e:
+                        logger.warning(f"Error fetching code snippet for issue {i['key']}: {str(e)}")
+                issues.append(issue)
 
-            # Optionally delete project to avoid clutter
-            delete_project_url = f"{api_base}/projects/delete"
-            delete_project_params = {"project": project_key}
-            delete_resp = requests.post(delete_project_url, headers=auth_headers, params=delete_project_params)
-            if delete_resp.status_code != 204:
-                print(f"Warning: Failed to delete project {project_key}: {delete_resp.text}")
+            # Comment out project deletion for UI verification
+            # delete_project_url = f"{api_base}/projects/delete"
+            # delete_project_params = {"project": project_key}
+            # delete_resp = requests.post(delete_project_url, headers=auth_headers, params=delete_project_params, timeout=10)
+            # if delete_resp.status_code != 204:
+            #     logger.warning(f"Failed to delete project {project_key}: {delete_resp.text}")
 
             return ScanResult(
                 bugs=int(measures.get("bugs", 0)),
