@@ -110,13 +110,13 @@ class SonarQubeService:
             # Create sonar-project.properties
             props_path = os.path.join(project_dir, "sonar-project.properties")
             props_content = f"""
-sonar.projectKey={project_key}
-sonar.projectName={project_name}
-sonar.sources=.
-sonar.sourceEncoding=UTF-8
-sonar.host.url={self.sonar_host_scanner}
-sonar.token={self.sonar_token}
-"""
+                sonar.projectKey={project_key}
+                sonar.projectName={project_name}
+                sonar.sources=.
+                sonar.sourceEncoding=UTF-8
+                sonar.host.url={self.sonar_host_scanner}
+                sonar.token={self.sonar_token}
+                """
             if any(os.path.splitext(f)[1] in {'.rb', '.erb', '.rjs', '.rhtml', '.haml', '.slim'} for f in os.listdir(project_dir)):
                 props_content += "sonar.ruby.file.suffixes=.rb,.erb,.rjs,.rhtml,.haml,.slim\n"
             if any(os.path.splitext(f)[1] in {'.java'} for f in os.listdir(project_dir)):
