@@ -1,0 +1,24 @@
+2025-10-09 14:03:23,608 - app.services.sonarqube_service - INFO - Running SonarScanner for scan_1759993403_87b7e4f5
+2025-10-09 14:03:46,272 - app.services.sonarqube_service - INFO - Waiting for scan results, attempt 1/15
+2025-10-09 14:03:49,358 - app.services.sonarqube_service - INFO - Fetching code snippet for issue cf447903-c790-46dc-b67e-d770787b358f at scan_1759993403_87b7e4f5:FormTest/FormTest/Practice1.aspx:5
+2025-10-09 14:03:49,367 - app.services.sonarqube_service - WARNING - API failed for issue cf447903-c790-46dc-b67e-d770787b358f: 403 {"errors":[{"msg":"Insufficient privileges"}]}
+2025-10-09 14:03:49,373 - app.services.sonarqube_service - INFO - Fallback snippet retrieved for cf447903-c790-46dc-b67e-d770787b358f from /var/folders/6t/ky8gxw4n4jxdv58crn7bjm9c0000gn/T/tmpt0mksjso/FormTest/FormTest/Practice1.aspx
+2025-10-09 14:03:49,373 - app.services.sonarqube_service - INFO - Fetching code snippet for issue 33e24793-54be-4cef-9c6c-b759c110203e at scan_1759993403_87b7e4f5:FormTest/FormTest/Practice1.aspx:28
+2025-10-09 14:03:49,382 - app.services.sonarqube_service - WARNING - API failed for issue 33e24793-54be-4cef-9c6c-b759c110203e: 403 {"errors":[{"msg":"Insufficient privileges"}]}
+2025-10-09 14:03:49,383 - app.services.sonarqube_service - INFO - Fallback snippet retrieved for 33e24793-54be-4cef-9c6c-b759c110203e from /var/folders/6t/ky8gxw4n4jxdv58crn7bjm9c0000gn/T/tmpt0mksjso/FormTest/FormTest/Practice1.aspx
+2025-10-09 14:03:49,383 - app.services.sonarqube_service - INFO - Fetching code snippet for issue a40cc400-22a7-48b3-b39f-2394e738e2ed at scan_1759993403_87b7e4f5:FormTest/FormTest/Practice1.aspx:81
+2025-10-09 14:03:49,390 - app.services.sonarqube_service - WARNING - API failed for issue a40cc400-22a7-48b3-b39f-2394e738e2ed: 403 {"errors":[{"msg":"Insufficient privileges"}]}
+2025-10-09 14:03:49,390 - app.services.sonarqube_service - INFO - Fallback snippet retrieved for a40cc400-22a7-48b3-b39f-2394e738e2ed from /var/folders/6t/ky8gxw4n4jxdv58crn7bjm9c0000gn/T/tmpt0mksjso/FormTest/FormTest/Practice1.aspx
+2025-10-09 14:03:49,390 - app.services.sonarqube_service - INFO - Fetching code snippet for issue 0c41a88a-18a3-4a00-a7ce-23ae4728b163 at scan_1759993403_87b7e4f5:FormTest/FormTest/Practice1.aspx:90
+2025-10-09 14:03:49,397 - app.services.sonarqube_service - WARNING - API failed for issue 0c41a88a-18a3-4a00-a7ce-23ae4728b163: 403 {"errors":[{"msg":"Insufficient privileges"}]}
+2025-10-09 14:03:49,397 - app.services.sonarqube_service - INFO - Fallback snippet retrieved for 0c41a88a-18a3-4a00-a7ce-23ae4728b163 from /var/folders/6t/ky8gxw4n4jxdv58crn7bjm9c0000gn/T/tmpt0mksjso/FormTest/FormTest/Practice1.aspx
+2025-10-09 14:03:49,397 - app.services.sonarqube_service - INFO - Fetching code snippet for issue e0a9a588-d6e9-4d0f-bd58-5a7f50c4eb06 at scan_1759993403_87b7e4f5:FormTest/FormTest/Practice1.aspx:98
+2025-10-09 14:03:49,406 - app.services.sonarqube_service - WARNING - API failed for issue e0a9a588-d6e9-4d0f-bd58-5a7f50c4eb06: 403 {"errors":[{"msg":"Insufficient privileges"}]}
+2025-10-09 14:03:49,407 - app.services.sonarqube_service - INFO - Fallback snippet retrieved for e0a9a588-d6e9-4d0f-bd58-5a7f50c4eb06 from /var/folders/6t/ky8gxw4n4jxdv58crn7bjm9c0000gn/T/tmpt0mksjso/FormTest/FormTest/Practice1.aspx
+2025-10-09 14:03:49,407 - app.services.sonarqube_service - INFO - Fetching code snippet for issue 0b609293-be24-4d8d-886f-f7980ba91e5f at scan_1759993403_87b7e4f5:FormTest/FormTest/Practice1.aspx:107
+2025-10-09 14:03:49,414 - app.services.sonarqube_service - WARNING - API failed for issue 0b609293-be24-4d8d-886f-f7980ba91e5f: 403 {"errors":[{"msg":"Insufficient privileges"}]}
+2025-10-09 14:03:49,414 - app.services.sonarqube_service - INFO - Fallback snippet retrieved for 0b609293-be24-4d8d-886f-f7980ba91e5f from /var/folders/6t/ky8gxw4n4jxdv58crn7bjm9c0000gn/T/tmpt0mksjso/FormTest/FormTest/Practice1.aspx
+2025-10-09 14:03:49,414 - app.services.sonarqube_service - INFO - Fetching code snippet for issue ccacfa92-a6c3-4dd1-bd57-b196f4b35e36 at scan_1759993403_87b7e4f5:FormTest/FormTest/Practice1.aspx:116
+2025-10-09 14:03:49,420 - app.services.sonarqube_service - WARNING - API failed for issue ccacfa92-a6c3-4dd1-bd57-b196f4b35e36: 403 {"errors":[{"msg":"Insufficient privileges"}]}
+2025-10-09 14:03:49,420 - app.services.sonarqube_service - INFO - Fallback snippet retrieved for ccacfa92-a6c3-4dd1-bd57-b196f4b35e36 from /var/folders/6t/ky8gxw4n4jxdv58crn7bjm9c0000gn/T/tmpt0mksjso/FormTest/FormTest/Practice1.aspx
+2025-10-09 14:03:49,420 - app.services.sonarqube_service - INFO - Scan completed for scan_1759993403_87b7e4f5: 7 issues found
