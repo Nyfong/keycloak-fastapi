@@ -75,3 +75,335 @@
 2025-10-09 22:18:37,563 - httpx - INFO - HTTP Request: PUT http://localhost:1280/admin/realms/fastapi-realm/users/eeffe261-7c2f-4d90-a12b-c8e865c34f23/reset-password "HTTP/1.1 204 No Content"
 2025-10-09 22:33:00,793 - httpx - INFO - HTTP Request: POST http://localhost:1280/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 200 OK"
 2025-10-09 22:43:51,716 - httpx - INFO - HTTP Request: POST http://localhost:1280/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 200 OK"
+2025-10-10 09:56:35,156 - httpx - INFO - HTTP Request: POST http://localhost:1280/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 10:00:56,890 - httpx - INFO - HTTP Request: POST http://localhost:1280/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 10:02:55,506 - httpx - INFO - HTTP Request: POST http://localhost:1280/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 14:10:14,269 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 401 Unauthorized"
+2025-10-10 14:11:24,135 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 14:24:34,494 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 14:25:55,857 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:03:06,027 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:04:00,076 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:04:51,826 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:18:18,317 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:19:33,814 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:25:35,462 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:26:21,666 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:27:32,058 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:30:47,953 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:33:02,630 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:35:44,695 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:35:47,562 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:35:47,702 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:35:47,862 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:35:48,028 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:35:48,219 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:36:33,112 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:37:39,904 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 200 OK"
+2025-10-10 15:39:16,848 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 200 OK"
+2025-10-10 15:40:44,995 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 200 OK"
+2025-10-10 15:40:57,945 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:41:50,917 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 400 Bad Request"
+2025-10-10 15:42:07,421 - httpx - INFO - HTTP Request: POST http://localhost:1920/realms/fastapi-realm/protocol/openid-connect/token "HTTP/1.1 200 OK"
+2025-10-10 16:36:28,423 - app.services.sonarqube_service - INFO - Running SonarScanner for scan_1760088987_def61815
+2025-10-10 16:37:35,090 - app.services.sonarqube_service - ERROR - Scan failed: WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+09:37:34.007 ERROR Error during SonarScanner Engine execution
+java.lang.IllegalStateException: Failed to upload report: Fail to request url: http://sonarqube-doc:9000/api/ce/submit?projectKey=scan_1760088987_def61815&projectName=Scan_php.php.zip_1760088987
+	at org.sonar.scanner.report.ReportPublisher.upload(ReportPublisher.java:243)
+	at org.sonar.scanner.report.ReportPublisher.execute(ReportPublisher.java:163)
+	at org.sonar.scanner.scan.SpringProjectScanContainer.doAfterStart(SpringProjectScanContainer.java:189)
+	at org.sonar.core.platform.SpringComponentContainer.startComponents(SpringComponentContainer.java:227)
+	at org.sonar.core.platform.SpringComponentContainer.execute(SpringComponentContainer.java:206)
+	at org.sonar.scanner.bootstrap.SpringScannerContainer.doAfterStart(SpringScannerContainer.java:339)
+	at org.sonar.core.platform.SpringComponentContainer.startComponents(SpringComponentContainer.java:227)
+	at org.sonar.core.platform.SpringComponentContainer.execute(SpringComponentContainer.java:206)
+	at org.sonar.scanner.bootstrap.SpringGlobalContainer.doAfterStart(SpringGlobalContainer.java:142)
+	at org.sonar.core.platform.SpringComponentContainer.startComponents(SpringComponentContainer.java:227)
+	at org.sonar.core.platform.SpringComponentContainer.execute(SpringComponentContainer.java:206)
+	at org.sonar.scanner.bootstrap.ScannerMain.runScannerEngine(ScannerMain.java:157)
+	at org.sonar.scanner.bootstrap.ScannerMain.run(ScannerMain.java:72)
+	at org.sonar.scanner.bootstrap.ScannerMain.main(ScannerMain.java:56)
+Caused by: java.lang.IllegalStateException: Fail to request url: http://sonarqube-doc:9000/api/ce/submit?projectKey=scan_1760088987_def61815&projectName=Scan_php.php.zip_1760088987
+	at org.sonarqube.ws.client.HttpConnector.doCall(HttpConnector.java:217)
+	at org.sonarqube.ws.client.HttpConnector.executeRequest(HttpConnector.java:167)
+	at org.sonarqube.ws.client.HttpConnector.call(HttpConnector.java:121)
+	at org.sonar.scanner.http.DefaultScannerWsClient.call(DefaultScannerWsClient.java:87)
+	at org.sonar.scanner.report.ReportPublisher.upload(ReportPublisher.java:241)
+	... 13 common frames omitted
+Caused by: java.net.UnknownHostException: sonarqube-doc: Name or service not known
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(Unknown Source)
+	at java.base/java.net.InetAddress.getAddressesFromNameService(Unknown Source)
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(Unknown Source)
+	at java.base/java.net.InetAddress.getAllByName0(Unknown Source)
+	at java.base/java.net.InetAddress.getAllByName(Unknown Source)
+	at java.base/java.net.InetAddress.getAllByName(Unknown Source)
+	at okhttp3.Dns$Companion$DnsSystem.lookup(Dns.kt:49)
+	at okhttp3.internal.connection.RouteSelector.resetNextInetSocketAddress(RouteSelector.kt:169)
+	at okhttp3.internal.connection.RouteSelector.nextProxy(RouteSelector.kt:131)
+	at okhttp3.internal.connection.RouteSelector.next(RouteSelector.kt:73)
+	at okhttp3.internal.connection.ExchangeFinder.findConnection(ExchangeFinder.kt:205)
+	at okhttp3.internal.connection.ExchangeFinder.findHealthyConnection(ExchangeFinder.kt:106)
+	at okhttp3.internal.connection.ExchangeFinder.find(ExchangeFinder.kt:74)
+	at okhttp3.internal.connection.RealCall.initExchange$okhttp(RealCall.kt:255)
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.kt:32)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.kt:95)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.kt:83)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.kt:76)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.logging.HttpLoggingInterceptor.intercept(HttpLoggingInterceptor.kt:221)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.connection.RealCall.getResponseWithInterceptorChain$okhttp(RealCall.kt:201)
+	at okhttp3.internal.connection.RealCall.execute(RealCall.kt:154)
+	at org.sonarqube.ws.client.HttpConnector.doCall(HttpConnector.java:215)
+	... 17 common frames omitted
+
+
+2025-10-10 16:37:35,100 - app.services.sonarqube_service - ERROR - Scan error: 500: Scan failed: WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+09:37:34.007 ERROR Error during SonarScanner Engine execution
+java.lang.IllegalStateException: Failed to upload report: Fail to request url: http://sonarqube-doc:9000/api/ce/submit?projectKey=scan_1760088987_def61815&projectName=Scan_php.php.zip_1760088987
+	at org.sonar.scanner.report.ReportPublisher.upload(ReportPublisher.java:243)
+	at org.sonar.scanner.report.ReportPublisher.execute(ReportPublisher.java:163)
+	at org.sonar.scanner.scan.SpringProjectScanContainer.doAfterStart(SpringProjectScanContainer.java:189)
+	at org.sonar.core.platform.SpringComponentContainer.startComponents(SpringComponentContainer.java:227)
+	at org.sonar.core.platform.SpringComponentContainer.execute(SpringComponentContainer.java:206)
+	at org.sonar.scanner.bootstrap.SpringScannerContainer.doAfterStart(SpringScannerContainer.java:339)
+	at org.sonar.core.platform.SpringComponentContainer.startComponents(SpringComponentContainer.java:227)
+	at org.sonar.core.platform.SpringComponentContainer.execute(SpringComponentContainer.java:206)
+	at org.sonar.scanner.bootstrap.SpringGlobalContainer.doAfterStart(SpringGlobalContainer.java:142)
+	at org.sonar.core.platform.SpringComponentContainer.startComponents(SpringComponentContainer.java:227)
+	at org.sonar.core.platform.SpringComponentContainer.execute(SpringComponentContainer.java:206)
+	at org.sonar.scanner.bootstrap.ScannerMain.runScannerEngine(ScannerMain.java:157)
+	at org.sonar.scanner.bootstrap.ScannerMain.run(ScannerMain.java:72)
+	at org.sonar.scanner.bootstrap.ScannerMain.main(ScannerMain.java:56)
+Caused by: java.lang.IllegalStateException: Fail to request url: http://sonarqube-doc:9000/api/ce/submit?projectKey=scan_1760088987_def61815&projectName=Scan_php.php.zip_1760088987
+	at org.sonarqube.ws.client.HttpConnector.doCall(HttpConnector.java:217)
+	at org.sonarqube.ws.client.HttpConnector.executeRequest(HttpConnector.java:167)
+	at org.sonarqube.ws.client.HttpConnector.call(HttpConnector.java:121)
+	at org.sonar.scanner.http.DefaultScannerWsClient.call(DefaultScannerWsClient.java:87)
+	at org.sonar.scanner.report.ReportPublisher.upload(ReportPublisher.java:241)
+	... 13 common frames omitted
+Caused by: java.net.UnknownHostException: sonarqube-doc: Name or service not known
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(Unknown Source)
+	at java.base/java.net.InetAddress.getAddressesFromNameService(Unknown Source)
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(Unknown Source)
+	at java.base/java.net.InetAddress.getAllByName0(Unknown Source)
+	at java.base/java.net.InetAddress.getAllByName(Unknown Source)
+	at java.base/java.net.InetAddress.getAllByName(Unknown Source)
+	at okhttp3.Dns$Companion$DnsSystem.lookup(Dns.kt:49)
+	at okhttp3.internal.connection.RouteSelector.resetNextInetSocketAddress(RouteSelector.kt:169)
+	at okhttp3.internal.connection.RouteSelector.nextProxy(RouteSelector.kt:131)
+	at okhttp3.internal.connection.RouteSelector.next(RouteSelector.kt:73)
+	at okhttp3.internal.connection.ExchangeFinder.findConnection(ExchangeFinder.kt:205)
+	at okhttp3.internal.connection.ExchangeFinder.findHealthyConnection(ExchangeFinder.kt:106)
+	at okhttp3.internal.connection.ExchangeFinder.find(ExchangeFinder.kt:74)
+	at okhttp3.internal.connection.RealCall.initExchange$okhttp(RealCall.kt:255)
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.kt:32)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.kt:95)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.kt:83)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.kt:76)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.logging.HttpLoggingInterceptor.intercept(HttpLoggingInterceptor.kt:221)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:109)
+	at okhttp3.internal.connection.RealCall.getResponseWithInterceptorChain$okhttp(RealCall.kt:201)
+	at okhttp3.internal.connection.RealCall.execute(RealCall.kt:154)
+	at org.sonarqube.ws.client.HttpConnector.doCall(HttpConnector.java:215)
+	... 17 common frames omitted
+
+
+Output: 09:36:34.246 INFO  Scanner configuration file: /opt/sonar-scanner/conf/sonar-scanner.properties
+09:36:34.273 INFO  Project root configuration file: /usr/src/sonar-project.properties
+09:36:34.345 INFO  SonarScanner CLI 7.2.0.5079
+09:36:34.367 INFO  Linux 6.10.14-linuxkit amd64
+09:36:42.434 INFO  Communicating with SonarQube Community Build 25.9.0.112764
+09:36:42.453 INFO  JRE provisioning: os[linux], arch[x86_64]
+09:36:50.062 INFO  Starting SonarScanner Engine...
+09:36:50.064 INFO  Java 17.0.13 Eclipse Adoptium (64-bit)
+09:36:53.008 INFO  Load global settings
+09:36:53.242 INFO  Load global settings (done) | time=235ms
+09:36:53.255 INFO  Server id: 147B411E-AZnEX_cmGO8DGzTfODil
+09:36:53.300 INFO  Loading required plugins
+09:36:53.303 INFO  Load plugins index
+09:36:53.504 INFO  Load plugins index (done) | time=202ms
+09:36:53.507 INFO  Load/download plugins
+09:36:54.217 INFO  Load/download plugins (done) | time=708ms
+09:36:55.382 INFO  Process project properties
+09:36:55.583 INFO  Process project properties (done) | time=203ms
+09:36:55.631 INFO  Project key: scan_1760088987_def61815
+09:36:55.637 INFO  Base dir: /usr/src
+09:36:55.638 INFO  Working dir: /tmp/.scannerwork
+09:36:55.847 INFO  Load project settings for component key: 'scan_1760088987_def61815'
+09:36:55.973 INFO  Load project settings for component key: 'scan_1760088987_def61815' (done) | time=133ms
+09:36:56.097 INFO  Load quality profiles
+09:36:58.378 INFO  Load quality profiles (done) | time=2281ms
+09:36:58.843 WARN  SCM provider autodetection failed. Please use "sonar.scm.provider" to define SCM of your project, or disable the SCM Sensor in the project settings.
+09:36:58.862 INFO  Load active rules
+09:37:02.268 INFO  Load active rules (done) | time=3402ms
+09:37:02.374 INFO  Load analysis cache
+09:37:02.657 INFO  Load analysis cache (404) | time=276ms
+09:37:04.416 INFO  Preprocessing files...
+09:37:05.363 INFO  1 language detected in 4 preprocessed files (done) | time=928ms
+09:37:05.452 INFO  Loading plugins for detected languages
+09:37:05.463 INFO  Load/download plugins
+09:37:05.994 INFO  Load/download plugins (done) | time=524ms
+09:37:10.047 INFO  Load project repositories
+09:37:18.778 INFO  Load project repositories (done) | time=8730ms
+09:37:18.878 INFO  Indexing files...
+09:37:18.880 INFO  Project configuration:
+09:37:19.019 INFO  4 files indexed (done) | time=138ms
+09:37:19.035 INFO  Quality profile for php: Sonar way
+09:37:19.038 INFO  ------------- Run sensors on module Scan_php.php.zip_1760088987
+09:37:19.362 INFO  Load metrics repository
+09:37:19.504 INFO  Load metrics repository (done) | time=141ms
+09:37:28.392 INFO  Sensor JaCoCo XML Report Importer [jacoco]
+09:37:28.469 INFO  'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+09:37:28.476 INFO  No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+09:37:28.479 INFO  Sensor JaCoCo XML Report Importer [jacoco] (done) | time=84ms
+09:37:28.480 INFO  Sensor PHP sensor [php]
+09:37:29.867 INFO  Starting PHP symbol indexer
+09:37:29.967 INFO  1 source file to be analyzed
+09:37:30.370 INFO  1/1 source file has been analyzed
+09:37:30.372 INFO  Cached information of global symbols will be used for 0 out of 1 files. Global symbols were recomputed for the remaining files.
+09:37:30.501 INFO  Starting PHP rules
+09:37:30.511 INFO  1 source file to be analyzed
+09:37:31.225 INFO  1/1 source file has been analyzed
+09:37:31.227 INFO  The PHP analyzer was able to leverage cached data from previous analyses for 0 out of 1 files. These files were not parsed.
+09:37:31.228 INFO  Sensor PHP sensor [php] (done) | time=2822ms
+09:37:31.228 INFO  Sensor Analyzer for "php.ini" files [php]
+09:37:31.236 INFO  Sensor Analyzer for "php.ini" files [php] (done) | time=11ms
+09:37:31.237 INFO  Sensor PHPUnit report sensor [php]
+09:37:31.239 INFO  No PHPUnit tests reports provided (see 'sonar.php.tests.reportPath' property)
+09:37:31.240 INFO  No PHPUnit coverage reports provided (see 'sonar.php.coverage.reportPaths' property)
+09:37:31.243 INFO  Sensor PHPUnit report sensor [php] (done) | time=7ms
+09:37:31.243 INFO  Sensor IaC Docker Sensor [iac]
+09:37:31.512 INFO  0 source files to be analyzed
+09:37:31.513 INFO  0/0 source files have been analyzed
+09:37:31.516 INFO  Sensor IaC Docker Sensor [iac] (done) | time=273ms
+09:37:31.519 INFO  Sensor Java Config Sensor [iac]
+09:37:31.558 INFO  0 source files to be analyzed
+09:37:31.560 INFO  0/0 source files have been analyzed
+09:37:31.561 INFO  Sensor Java Config Sensor [iac] (done) | time=41ms
+09:37:31.562 INFO  Sensor HTML [web]
+09:37:31.608 INFO  Sensor HTML [web] (done) | time=50ms
+09:37:31.608 INFO  Sensor TextAndSecretsSensor [text]
+09:37:31.664 INFO  Available processors: 7
+09:37:31.665 INFO  Using 7 threads for analysis.
+09:37:32.703 INFO  The property "sonar.tests" is not set. To improve the analysis accuracy, we categorize a file as a test file if any of the following is true:
+  * The filename starts with "test"
+  * The filename contains "test." or "tests."
+  * Any directory in the file path is named: "doc", "docs", "test" or "tests"
+  * Any directory in the file path has a name ending in "test" or "tests"
+
+09:37:32.792 INFO  Start fetching files for the text and secrets analysis
+09:37:32.952 INFO  Using Git CLI to retrieve untracked files
+09:37:33.042 WARN  Retrieving only language associated files, make sure to run the analysis inside a git repository to make use of inclusions specified via "sonar.text.inclusions"
+09:37:33.048 INFO  Starting the text and secrets analysis
+09:37:33.054 INFO  1 source file to be analyzed for the text and secrets analysis
+09:37:33.126 INFO  1/1 source file has been analyzed for the text and secrets analysis
+09:37:33.134 INFO  Sensor TextAndSecretsSensor [text] (done) | time=1524ms
+09:37:33.154 INFO  ------------- Run sensors on project
+09:37:33.379 INFO  Sensor Zero Coverage Sensor
+09:37:33.392 INFO  Sensor Zero Coverage Sensor (done) | time=13ms
+09:37:33.392 INFO  ------------- Gather SCA dependencies on project
+09:37:33.409 INFO  Dependency analysis skipped
+09:37:33.410 INFO  SCM Publisher No SCM system was detected. You can use the 'sonar.scm.provider' property to explicitly specify it.
+09:37:33.411 INFO  CPD Executor Calculating CPD for 1 file
+09:37:33.415 INFO  CPD Executor CPD calculation finished (done) | time=11ms
+09:37:33.622 INFO  Analysis report generated in 189ms, dir size=252.7 kB
+09:37:33.661 INFO  Analysis report compressed in 33ms, zip size=30.2 kB
+09:37:34.072 INFO  EXECUTION FAILURE
+09:37:34.112 INFO  Total time: 59.865s
+
+2025-10-10 16:41:28,895 - app.services.sonarqube_service - INFO - Running SonarScanner for scan_1760089288_1e0b739b
+2025-10-10 16:41:53,821 - app.services.sonarqube_service - INFO - Waiting for scan results, attempt 1/15
+2025-10-10 16:41:56,887 - app.services.sonarqube_service - INFO - Waiting for scan results, attempt 2/15
+2025-10-10 16:41:59,927 - app.services.sonarqube_service - INFO - Waiting for scan results, attempt 3/15
+2025-10-10 16:42:03,039 - app.services.sonarqube_service - INFO - Fetching code snippet for issue 28ebfedf-fd29-42a3-b74c-db294467b358 at scan_1760089288_1e0b739b:php.php:9
+2025-10-10 16:42:03,050 - app.services.sonarqube_service - WARNING - API failed for issue 28ebfedf-fd29-42a3-b74c-db294467b358: 403 {"errors":[{"msg":"Insufficient privileges"}]}
+2025-10-10 16:42:03,051 - app.services.sonarqube_service - INFO - Fallback snippet retrieved for 28ebfedf-fd29-42a3-b74c-db294467b358 from /var/folders/6t/ky8gxw4n4jxdv58crn7bjm9c0000gn/T/tmpnj9hhh7b/php.php
+2025-10-10 16:42:03,051 - app.services.sonarqube_service - INFO - Fetching code snippet for issue 006025aa-4b0b-4da8-ba83-aa759c9f792f at scan_1760089288_1e0b739b:php.php:56
+2025-10-10 16:42:03,058 - app.services.sonarqube_service - WARNING - API failed for issue 006025aa-4b0b-4da8-ba83-aa759c9f792f: 403 {"errors":[{"msg":"Insufficient privileges"}]}
+2025-10-10 16:42:03,058 - app.services.sonarqube_service - INFO - Fallback snippet retrieved for 006025aa-4b0b-4da8-ba83-aa759c9f792f from /var/folders/6t/ky8gxw4n4jxdv58crn7bjm9c0000gn/T/tmpnj9hhh7b/php.php
+2025-10-10 16:42:03,058 - app.services.sonarqube_service - INFO - Scan completed for scan_1760089288_1e0b739b: 3 issues found
+2025-10-11 03:43:59,446 - fastapi - ERROR - Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+
+2025-10-11 03:54:48,095 - fastapi - ERROR - Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+
+2025-10-11 04:16:35,709 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-10-11 04:16:35,709 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-10-11 04:16:35,714 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-10-11 04:16:35,714 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-10-11 04:16:35,715 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-10-11 04:16:35,715 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-10-11 04:16:35,716 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-10-11 04:16:35,720 - sqlalchemy.engine.Engine - INFO - SELECT "user".user_id, "user".username, "user".email, "user".password, "user".is_active, "user".role 
+FROM "user"
+2025-10-11 04:16:35,720 - sqlalchemy.engine.Engine - INFO - [generated in 0.00025s] ()
+2025-10-11 04:16:35,726 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-10-11 04:16:37,718 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-10-11 04:16:37,718 - sqlalchemy.engine.Engine - INFO - SELECT "user".user_id, "user".username, "user".email, "user".password, "user".is_active, "user".role 
+FROM "user"
+2025-10-11 04:16:37,718 - sqlalchemy.engine.Engine - INFO - [cached since 1.999s ago] ()
+2025-10-11 04:16:37,722 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-10-11 04:19:50,695 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-10-11 04:19:50,695 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-10-11 04:19:50,697 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-10-11 04:19:50,698 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-10-11 04:19:50,699 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-10-11 04:19:50,699 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-10-11 04:19:50,700 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-10-11 04:19:50,704 - sqlalchemy.engine.Engine - INFO - SELECT "user".user_id, "user".username, "user".email, "user".password, "user".is_active, "user".role 
+FROM "user"
+2025-10-11 04:19:50,704 - sqlalchemy.engine.Engine - INFO - [generated in 0.00060s] ()
+2025-10-11 04:19:50,715 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-10-11 04:19:59,314 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-10-11 04:19:59,315 - sqlalchemy.engine.Engine - INFO - SELECT "user".user_id, "user".username, "user".email, "user".password, "user".is_active, "user".role 
+FROM "user"
+2025-10-11 04:19:59,315 - sqlalchemy.engine.Engine - INFO - [cached since 8.611s ago] ()
+2025-10-11 04:19:59,316 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-10-11 04:20:09,303 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-10-11 04:20:09,303 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-10-11 04:20:09,304 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-10-11 04:20:09,304 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-10-11 04:20:09,305 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-10-11 04:20:09,305 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-10-11 04:20:09,306 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-10-11 04:20:09,307 - sqlalchemy.engine.Engine - INFO - SELECT "user".user_id, "user".username, "user".email, "user".password, "user".is_active, "user".role 
+FROM "user"
+2025-10-11 04:20:09,307 - sqlalchemy.engine.Engine - INFO - [generated in 0.00010s] ()
+2025-10-11 04:20:09,314 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-10-11 04:22:45,990 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-10-11 04:22:45,991 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-10-11 04:22:45,992 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-10-11 04:22:45,993 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-10-11 04:22:45,993 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-10-11 04:22:45,993 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-10-11 04:22:45,994 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-10-11 04:22:45,998 - sqlalchemy.engine.Engine - INFO - SELECT "user".user_id, "user".username, "user".email, "user".password, "user".is_active, "user".role 
+FROM "user"
+2025-10-11 04:22:45,998 - sqlalchemy.engine.Engine - INFO - [generated in 0.00018s] ()
+2025-10-11 04:22:46,009 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2025-10-11 04:25:05,305 - sqlalchemy.engine.Engine - INFO - select pg_catalog.version()
+2025-10-11 04:25:05,305 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-10-11 04:25:05,307 - sqlalchemy.engine.Engine - INFO - select current_schema()
+2025-10-11 04:25:05,307 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-10-11 04:25:05,308 - sqlalchemy.engine.Engine - INFO - show standard_conforming_strings
+2025-10-11 04:25:05,308 - sqlalchemy.engine.Engine - INFO - [raw sql] ()
+2025-10-11 04:25:05,309 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-10-11 04:25:05,311 - sqlalchemy.engine.Engine - INFO - SELECT "user".user_id, "user".username, "user".email, "user".password, "user".is_active, "user".role 
+FROM "user"
+2025-10-11 04:25:05,311 - sqlalchemy.engine.Engine - INFO - [generated in 0.00013s] ()
+2025-10-11 04:25:05,318 - sqlalchemy.engine.Engine - INFO - ROLLBACK

@@ -1,5 +1,5 @@
 from fastapi import FastAPI, APIRouter
-from app.api.routes import public, secure , auth_route ,scan_route , subdomain_route
+from app.api.routes import public, secure , auth_route ,scan_route , subdomain_route , user_route
 
 # Create the main FastAPI app
 app = FastAPI(title="FastAPI x Keycloak")
@@ -14,6 +14,6 @@ api_router.include_router(secure.router)
 api_router.include_router(auth_route.router)
 api_router.include_router(scan_route.router)
 api_router.include_router(subdomain_route.router)
-
+api_router.include_router(user_route.router)
 # Include the parent router in the app
 app.include_router(api_router)

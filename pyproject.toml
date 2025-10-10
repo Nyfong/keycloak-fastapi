@@ -1,0 +1,31 @@
+[project]
+name = "pentra-api"
+version = "0.1.0"
+description = "pentraapi-cyberteam-sr-class"
+authors = [
+    {name = "Nyfong",email = "litongfong12@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "sqlalchemy (==2.0.44)",
+    "psycopg2-binary (>=2.9.11,<3.0.0)",
+    "pydantic-settings (==2.11.0)",
+    "python-jose (==3.5.0)",
+    "pydantic[email] (>=2.12.0,<3.0.0)",
+    "requests (==2.32.5)",
+    "aiohttp (==3.13.0)",
+    "dnspython (==2.8.0)",
+    "fastapi (==0.118.3)",
+    "httpx (==0.28.1)",
+    "pyjwt (==2.10.1)",
+    "python-dotenv (==1.1.1)",
+    "python-multipart (>=0.0.20,<0.0.21)",
+    "asyncpg (>=0.30.0,<0.31.0)",
+    "greenlet (>=3.2.4,<4.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
